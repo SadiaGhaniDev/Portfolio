@@ -35,14 +35,57 @@
                <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel='stylesheet' type='text/css'>
                 <!-- Local overrides (scrollbars + layout tweaks only) -->
                <style>
-                  /* show only N lines with ellipsis in the card */
-                  #profile_desc{
-                     display: -webkit-box;
-                     -webkit-line-clamp: 7; /* tweak lines */
-                     -webkit-box-orient: vertical;
-                     overflow: scroll;
-                  }
-               </style>
+                     /* TARGET ONLY the right profile summary scroll area */
+                     #profile_desc{
+                        /* keep your earlier settings */
+                        max-height:48vh;
+                        overflow-y:auto;
+                        padding-right:10px; /* room for the styled thumb */
+                        
+                        /* Firefox */
+                        scrollbar-width: thin; /* auto | thin | none */
+                        scrollbar-color: rgba(255,255,255,.38) rgba(255,255,255,.08); /* thumb | track */
+                     }
+
+                     /* WebKit (Chrome/Edge/Safari) */
+                     #profile_desc::-webkit-scrollbar{
+                        width: 10px;
+                     }
+                     #profile_desc::-webkit-scrollbar-track{
+                        background: rgba(255,255,255,.08);
+                        border-radius: 10px;
+                     }
+                     #profile_desc::-webkit-scrollbar-thumb{
+                        background: linear-gradient(
+                           to bottom,
+                           rgba(255,255,255,.45),
+                           rgba(255,255,255,.30)
+                        );
+                        border-radius: 10px;
+                        border: 2px solid transparent;     /* creates a nice inset look */
+                        background-clip: content-box;
+                     }
+                     #profile_desc::-webkit-scrollbar-thumb:hover{
+                        background: linear-gradient(
+                           to bottom,
+                           rgba(255,255,255,.65),
+                           rgba(255,255,255,.45)
+                        );
+                     }
+
+                     /* Optional: style the whole right card if it can scroll, too */
+                     .widget-profil{
+                        max-height:100vh;
+                        overflow-y:auto;
+                        scrollbar-width: thin;
+                        scrollbar-color: rgba(255,255,255,.35) transparent;
+                     }
+                     .widget-profil::-webkit-scrollbar{ width: 10px; }
+                     .widget-profil::-webkit-scrollbar-thumb{
+                        background: rgba(255,255,255,.28);
+                        border-radius: 10px;
+                     }
+                     </style>
             </head>
             <body>
                <!--[if lt IE 7]>
